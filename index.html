@@ -7,7 +7,7 @@
 		<meta name="description" content="An idle page to play with.">
     <title>Calming</title>
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		<link rel="manifest" href="/manifest.json" crossorigin="use-credentials">
+		<link rel="manifest" href="./manifest.json" crossorigin="use-credentials">
 		<link rel="shortcut icon" href="/favicon.png">
     <link href="style.css" rel="stylesheet" type="text/css" />
 		<link rel="apple-touch-icon" href="favicon.png">
@@ -30,13 +30,13 @@
 		</div>
 		<button id="qbtn" class='hide'>?</button>
 
-    <script src="instructions.js"></script>	
-    <script src="mobile.js"></script>	
-    <script src="script.js"></script>
+    <script src="./instructions.js"></script>	
+    <script src="./mobile.js"></script>	
+    <script src="./script.js"></script>
 		<script>
 		if ("serviceWorker" in navigator) {
 			navigator.serviceWorker
-				.register("sw.js")
+				.register("./sw.js")
 				.then(function (registration) {
 				})
 				.catch(function (err) {

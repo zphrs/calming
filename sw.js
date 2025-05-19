@@ -1,11 +1,10 @@
 if ("serviceWorker" in navigator) {
-	navigator.serviceWorker
-		.register("sw.js")
-		.then(function (registration) {
-		})
-		.catch(function (err) {
-			console.log(err);
-		});
+  navigator.serviceWorker
+    .register("./sw.js")
+    .then(function (registration) {})
+    .catch(function (err) {
+      console.log(err)
+    })
 }
 /*
 Copyright 2015, 2019, 2020, 2021 Google LLC. All Rights Reserved.
@@ -25,50 +24,49 @@ Copyright 2015, 2019, 2020, 2021 Google LLC. All Rights Reserved.
 // This variable is intentionally declared and unused.
 // Add a comment for your linter if you want:
 // eslint-disable-next-line no-unused-vars
-const OFFLINE_VERSION = 1;
-const CACHE_NAME = "offline";
+const OFFLINE_VERSION = 1
+const CACHE_NAME = "offline"
 // Customize this with a different URL if needed.
-const OFFLINE_URL = "index.html";
+const OFFLINE_URL = "index.html"
 
-self.addEventListener("install", (event) => {
+self.addEventListener("install", event => {
   event.waitUntil(
-      caches.open(CACHE_NAME)
-				.then(function(cache) {
-					return cache.addAll([
-						'/',
-						'/index.html',
-						'/script.js',
-						'/style.css',
-						'/instructions.js',
-						'/manifest.json'
-					]);
-				})
-  );
+    caches.open(CACHE_NAME).then(function (cache) {
+      return cache.addAll([
+        "./",
+        "./index.html",
+        "./script.js",
+        "./style.css",
+        "./instructions.js",
+        "./manifest.json",
+      ])
+    })
+  )
   // Force the waiting service worker to become the active service worker.
-  self.skipWaiting();
-});
+  self.skipWaiting()
+})
 
-self.addEventListener("activate", (event) => {
+self.addEventListener("activate", event => {
   event.waitUntil(
     (async () => {
       // Enable navigation preload if it's supported.
       // See https://developers.google.com/web/updates/2017/02/navigation-preload
       if ("navigationPreload" in self.registration) {
-        await self.registration.navigationPreload.enable();
+        await self.registration.navigationPreload.enable()
       }
     })()
-  );
+  )
 
   // Tell the active service worker to take control of the page immediately.
-  self.clients.claim();
-});
+  self.clients.claim()
+})
 
-self.addEventListener('fetch', function(event) {
- console.log(event.request.url);
+self.addEventListener("fetch", function (event) {
+  console.log(event.request.url)
 
- event.respondWith(
-   caches.match(event.request).then(function(response) {
-     return response || fetch(event.request);
-   })
- );
-});
+  event.respondWith(
+    caches.match(event.request).then(function (response) {
+      return response || fetch(event.request)
+    })
+  )
+})
