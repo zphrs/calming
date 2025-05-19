@@ -1,0 +1,138 @@
+#loader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: black;
+	touch-action: none;
+	-webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+	z-index: -10;
+}
+html {
+	background: black;
+	overflow: hidden;
+	-webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+}
+#hint {
+	color: white;
+	position: absolute;
+	top: -100%;
+	left: 0;
+	opacity: 0;
+	transition: opacity .5s ease-in, top 1s ease-in;
+	z-index: 10;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: max(min(8vw, calc(9.25vh - 5px)), 20px);
+	display: grid;
+	grid-template-columns: repeat(10, 100vw);
+	grid-template-rows: 1fr;
+	scroll-snap-type: x mandatory;
+	height: 100%;
+	max-width: 100%;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	-webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+}
+
+#hint::-webkit-scrollbar {
+	opacity: 0;
+}
+#hint > * {
+	scroll-snap-align: start;
+	padding: 0px 50px;
+	-webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+}
+
+#hint > button {
+	padding: 0;
+	position: fixed;
+	width: 40px;
+	height: 40px;
+	opacity: 50%;
+	border: none;
+	border-radius: 50%;
+	top: calc(50% - 30px);
+	outline: none;
+	background-color: white;
+	transition: opacity 1s ease;
+	font-weight: 900;
+	font-size: 15px;
+	vertical-align: center;
+	text-align: center;
+	color: grey;
+	cursor: pointer;
+	text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+}
+#hint > button:is(:hover, :focus) {
+	opacity: 100%;
+	box-shadow: 0 0 5px white;
+}
+#hint > button#close {
+	top: calc(100% - max(10%, 50px));
+	left:  clamp(0%, calc(50% - 250px), 45px);
+	width: clamp(calc(100% - 90px), 500px, 100%);
+	border-radius: 0;
+	height: max(10%, 50px);
+	font-weight: 400;
+	font-size: 20px;
+}
+#hint > #left {
+	left: 5px;
+}
+#hint > #right {
+	right: 5px;
+}
+#hint.show {
+	opacity: 1;
+	top: 0%;
+	transition: opacity 1s ease-out .5s, top 1s ease-out;
+}
+#qbtn {
+	padding: 0;
+	position: fixed;
+	width: 40px;
+	height: 40px;
+	opacity: 50%;
+	border: none;
+	border-radius: 50%;
+	outline: none;
+	background-color: white;
+	transition: opacity 1s ease;
+	font-weight: 900;
+	font-size: 15px;
+	vertical-align: center;
+	text-align: center;
+	color: grey;
+	cursor: pointer;
+	text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+	right: 20px;
+	top: calc(100% - 60px);
+	z-index: 15;
+}
+#qbtn:is(:hover, :focus) {
+	opacity: 100%;
+	box-shadow: 0 0 5px white;
+}
+.hide {
+	opacity: 0 !important;
+	cursor: default !important;
+}
+#hint > h1 {
+	font-size: inherit;
+}
+#hint > p {
+	font-size: .75em;
+}

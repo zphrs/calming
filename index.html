@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+		<meta name="theme-color" content="#000000">
+		<meta name="description" content="An idle page to play with.">
+    <title>Calming</title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="manifest" href="/manifest.json" crossorigin="use-credentials">
+		<link rel="shortcut icon" href="/favicon.png">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+		<link rel="apple-touch-icon" href="favicon.png">
+  </head>
+  <body>
+		<canvas id="loader"></canvas>
+		<div id="hint" class="show">
+			<h1 data-interaction="touch">Swipe up to add points.</h1>
+			<h1 data-interaction="keyboard">Press 'w', press the up arrow, or scroll up to add points and to hide this menu.</h1>
+			<h1 data-interaction="touch">Swipe down to remove points.</h1>
+			<h1 data-interaction="keyboard">Press 's', press the down arrow, or scroll down to remove points.</h1>
+			<h1>Points are added and removed gradually.<br>If the line is green then points are being added.<br>If the line is purple then points are being removed.</h1>
+			<h1 data-interaction="touch">Tap to reset the speed of points.</h1>
+			<h1 data-interaction="keyboard">Click to reset the speed of points.</h1>
+			<h1 data-interaction="touch">Tap and hold to reset everything.</h1>
+			<h1 data-interaction="keyboard">Click and hold to reset everything.</h1>
+			<button id="left" class="hide"><</button>
+			<button id="right">></button>
+			<button id="close">close</button>
+		</div>
+		<button id="qbtn" class='hide'>?</button>
+
+    <script src="instructions.js"></script>	
+    <script src="mobile.js"></script>	
+    <script src="script.js"></script>
+		<script>
+		if ("serviceWorker" in navigator) {
+			navigator.serviceWorker
+				.register("sw.js")
+				.then(function (registration) {
+				})
+				.catch(function (err) {
+					console.log(err);
+				});
+		}
+	</script>
+  </body>
+</html>
